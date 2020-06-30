@@ -1,0 +1,15 @@
+.red {
+    border: 2px solid red;
+}
+
+.jumbotron {
+    margin-top: 70px;
+}
+
+.img-thumbnail {
+    margin-bottom: 1.5em;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #ffffff;
+}
