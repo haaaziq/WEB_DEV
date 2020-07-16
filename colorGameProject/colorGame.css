@@ -1,0 +1,86 @@
+body{
+    background: #212121;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    background: rgb(62, 132, 155);
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0.6em;
+    line-height: 1.8em;
+    font-size: 1.6em;
+}
+
+#messageBar {
+    background: white;
+    text-align: center;
+    color: rgb(62, 132, 155);
+    height: 25px;
+    font-weight: 600;
+    margin-bottom: 1em;
+}
+
+#messageBar span {
+    padding: 0 10%;
+}
+
+#messageBar button {
+    /* background: white; */
+    border: none;
+    font-size: 1em;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: 0;
+    padding-bottom: 0.15em;
+    /* color: rgb(62, 132, 155); */
+    transition: background 0.4s;
+}
+
+#messageBar button:hover {
+    background-color: rgb(62, 132, 155);
+    color: white;
+}
+
+.selected {
+    background-color: rgb(62, 132, 155);
+    color: white;
+}
+
+h1 span {
+    font-size: 1.3em;
+} 
+
+.container {
+    margin: 0 auto;
+    max-width: 550px;
+    width: 85%;
+    text-align: center;
+}
+
+.square {
+    width: 30%;
+    margin: 1.6%;
+    background-color: pink;
+    padding-bottom: 30%;
+    float: left;
+    border-radius: 1em;
+    cursor: pointer;
+    transition: background 0.5s;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background: rgb(62, 132, 155);
+    margin-bottom: -0.2em;
+}
