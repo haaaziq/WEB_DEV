@@ -60,8 +60,10 @@ import { Card, CardImg, CardTitle, CardText, CardBody } from "reactstrap";
 function DishDetail(props){
     const dish = props.dish;
     return(
-        <div className='row'>
-            <RenderDish dish={dish} />
+        <div className='container'>
+            <div className='row'>
+                <RenderDish dish={dish} />
+            </div>
         </div>
     );
 }
