@@ -3,7 +3,7 @@
 import { Component } from 'react';
 import Menu from './MenuComponent';
 import Contact from './ContactComponent'
-// import DishDetail from './DishdetailComponent';
+import DishDetail from './DishdetailComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
@@ -39,12 +39,24 @@ class Main extends Component {
       );
     }
 
+    // ROUTE passes 3 objects to the component- match, location and history.
+      // match contains the route parameters under eg. match.params.dishId
+    const DishWithID = ({match}) => {
+      return(
+        <DishDetail 
+          dish={this.state.dishes.filter((dish) => dish.id === parseInt(match.params.dishId, 10))[0]} 
+          comments={this.state.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId, 10))}
+        />
+      );
+    }
+
     return (
       <div>
         <Header />
           <Switch>
             <Route path='/home' component={Homepage} />
             <Route exact path='/menu' component={()=> <Menu dishes={this.state.dishes} />} />
+            <Route path='/menu/:dishId' component={DishWithID} />
             <Route exact path='/contactus' component={Contact} />
             <Redirect to='/home'/>
           </Switch>
