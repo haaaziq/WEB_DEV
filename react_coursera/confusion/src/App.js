@@ -8,7 +8,9 @@ const store = ConfigureStore();
 
 function App() {
   return (
-    <Provider store={store}>
+    // Provider component makes the Redux Store available 
+    // to any nested components that need to access the Redux Store
+    <Provider store={store}> 
       <BrowserRouter>
         <div>
           <Main />
