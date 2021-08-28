@@ -45,15 +45,50 @@ import { baseUrl } from "../shared/baseUrl";
 
     // Action creator function addComment that will return the action object(type & payload)
     // Action that will create new comment on Dish Detail Component
-    export const addComment = (dishId, rating, author, comment) => ({
+    export const addComment = (comment) => ({
         type: ActionTypes.ADD_COMMENT,
-        payload: {
+        payload: comment
+    });
+
+    // Thunk for posting comments
+    // for adding comment to our redux store, first we post the comment to our json server
+    //      and the response from the server will call the action to add comment and
+    //      store it to our redux store through reducer.
+    export const postComment = (dishId, rating, author, comment) => (dispatch) => {
+        const newComment = {
             dishId: dishId,
             rating: rating,
             author: author,
-            comment: comment
+            comment: comment,
         }
-    });
+        newComment.date = new Date().toISOString();
+
+        fetch(baseUrl + 'comments', {
+            method: 'POST',
+            body: JSON.stringify(newComment),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'same-origin',
+        })
+            .then(response => {
+                if(response.ok)
+                    return response;
+                else{
+                    var error = new Error("Error! " + response.status + " -" + response.statusText);
+                    error.response = response;
+                    throw error;
+                }
+            }, error => {
+                var errMsg = new Error(error.message);
+                throw errMsg;
+            })
+            .then(comment => dispatch(addComment(comment)))
+            .catch(error => {
+                console.log('Post Comments, ' + error.message);
+                alert('Comment not posted!\nError! ' + error.message);
+            })
+    }
 
     // Thunk for fetching comments
     export const fetchComments = () => (dispatch) => {

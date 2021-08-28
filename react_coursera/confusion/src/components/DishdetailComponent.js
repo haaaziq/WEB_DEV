@@ -26,7 +26,7 @@ class CommentForm extends Component{
 
     handleCommentSubmit(values){
         this.toggleCommentModal();
-        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+        this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
     }
 
     render(){
@@ -86,7 +86,7 @@ class CommentForm extends Component{
         return newDate.toLocaleDateString("en-US", format);
     }
 
-    function RenderComments({commentsErrMsg, comments, addComment, dishId}){
+    function RenderComments({commentsErrMsg, comments, postComment, dishId}){
         if(commentsErrMsg){
             return(
                 <h4>{commentsErrMsg}</h4>
@@ -108,7 +108,7 @@ class CommentForm extends Component{
                     <ul className='list-unstyled'>
                         {allComments}
                     </ul>
-                    <CommentForm addComment={addComment} dishId={dishId} />
+                    <CommentForm postComment={postComment} dishId={dishId} />
                 </div>
             );
 
@@ -177,7 +177,7 @@ function DishDetail(props){
                 </div>
                 <div className='row'>
                     <RenderDish dish={props.dish} />
-                    <RenderComments commentsErrMsg={props.commentsErrMsg} comments={props.comments} addComment={props.addComment} dishId={props.dish.id} />
+                    <RenderComments commentsErrMsg={props.commentsErrMsg} comments={props.comments} postComment={props.postComment} dishId={props.dish.id} />
                 </div>
             </div>
         );
