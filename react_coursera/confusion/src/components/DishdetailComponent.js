@@ -27,6 +27,7 @@ class CommentForm extends Component{
     handleCommentSubmit(values){
         this.toggleCommentModal();
         this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
+        alert('new comment posted by: ' + values.author);
     }
 
     render(){
