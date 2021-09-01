@@ -158,3 +158,89 @@ import { baseUrl } from "../shared/baseUrl";
         type: ActionTypes.PROMOS_FAILED,
         payload: errMsg,
     });
+
+
+    // =========== LEADERS Action Creators ==============
+
+    // Thunk for fetching leaders
+    export const fetchLeaders = () => (dispatch) => {
+        dispatch(leadersLoading(true));
+
+        return fetch(baseUrl + 'leaders')
+            .then(response => {
+                if(response.ok)
+                    return response;
+                else{
+                    var error = new Error('Error! ' + response.status + ' ' + response.statusText);
+                    error.response = response;
+                    throw error;
+                }
+            }, error => {
+                var errMsg = new Error(error.message);
+                throw errMsg;
+            })
+            .then(response => response.json())
+            .then(leaders => dispatch(addLeaders(leaders)))
+            .catch(error => dispatch(leadersFailed(error.message)));
+    }
+
+    export const addLeaders = (leaders) => ({
+        type: ActionTypes.ADD_LEADERS,
+        payload: leaders,
+    });
+
+    export const leadersLoading = () => ({
+        type: ActionTypes.LEADERS_LOADING,
+    });
+
+    export const leadersFailed = (errMsg) => ({
+        type: ActionTypes.LEADERS_FAILED,
+        payload: errMsg,
+    });
+
+
+    // =========== Feedback Form Action Creator ==============
+
+    // Thunk for posting feedback
+    export const postFeedback = (firstname, lastname, telnum, email, agree, contactType, message) => (dispatch) => {
+        const newFeedback = {
+            firstname: firstname,
+            lastname: lastname,
+            telnum: telnum,
+            email: email,
+            agree: agree,
+            contactType: contactType,
+            message: message,
+            date : new Date().toISOString()
+        };
+
+        fetch(baseUrl + 'feedback', {
+            method: 'POST',
+            body: JSON.stringify(newFeedback),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'same-origin',
+        })
+            .then(response => {
+                if(response.ok)
+                    return response;
+                else{
+                    var error = new Error("Error! " + response.status + " -" + response.statusText);
+                    error.response = response;
+                    throw error;
+                }
+            }, error => {
+                var errMsg = new Error(error.message);
+                throw errMsg;
+            })
+            .then(response => response.json())
+            .then(feedback => alert('Thank you for your feedback!\n' + JSON.stringify(feedback)))
+            .catch(error => {
+                console.log('Post Feedback, ' + error.message);
+                alert('Feedback not posted!\nError! ' + error.message);
+            })
+    }
+
+//============================================================================
+//============================================================================

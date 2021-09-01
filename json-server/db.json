@@ -279,6 +279,39 @@
       "message": "afadsfds",
       "date": "2017-12-04T09:41:49.890Z",
       "id": 1
+    },
+    {
+      "firstname": "haziq",
+      "lastname": "khan",
+      "telnum": "123456",
+      "email": "hzq@ac.in",
+      "agree": true,
+      "contactType": "Email",
+      "message": "testing 1 2 3...",
+      "date": "2021-09-01T16:36:21.672Z",
+      "id": 2
+    },
+    {
+      "firstname": "Mohammad Haziq",
+      "lastname": "Khan",
+      "telnum": "8791575461",
+      "email": "haziqkhan123@gmail.com",
+      "agree": true,
+      "contactType": "Tel.",
+      "message": "Nice react application!!",
+      "date": "2021-09-01T16:45:16.900Z",
+      "id": 3
+    },
+    {
+      "firstname": "Tester",
+      "lastname": "One",
+      "telnum": "5987654",
+      "email": "test1@gmail.com",
+      "agree": true,
+      "contactType": "Email",
+      "message": "testing.....",
+      "date": "2021-09-01T17:20:32.110Z",
+      "id": 4
     }
   ]
 }
