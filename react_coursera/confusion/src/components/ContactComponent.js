@@ -1,7 +1,8 @@
+/* eslint-disable */
 import React, {Component} from 'react';
 import { Breadcrumb, BreadcrumbItem, Row, Label, Col,  Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Form, Control, Errors, actions } from 'react-redux-form';
+import { Form, Control, Errors } from 'react-redux-form';
 
 // Validator Functions
 const required = (val) => val && val.length;

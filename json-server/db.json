@@ -217,6 +217,14 @@
       "comment": "Delicious!!!👌",
       "date": "2021-08-28T18:31:45.376Z",
       "id": 21
+    },
+    {
+      "dishId": 2,
+      "rating": "2",
+      "author": "goku",
+      "comment": "not good",
+      "date": "2021-09-01T19:08:46.725Z",
+      "id": 22
     }
   ],
   "promotions": [
